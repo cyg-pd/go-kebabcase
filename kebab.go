@@ -1,10 +1,10 @@
-// Package snakecase - Super-Fast snake-case implementation.
-package snakecase
+// Package kebabcase - Super-Fast snake-case implementation.
+package kebabcase
 
-const underscoreByte = '_'
+const separatorByte = '-'
 
-// Snakecase the given string.
-func Snakecase(s string) string {
+// Kebabcase the given string.
+func Kebabcase(s string) string { //nolint:gocognit
 	idx := 0
 	hasLower := false
 	hasUnderscore := false
@@ -23,7 +23,7 @@ func Snakecase(s string) string {
 			continue
 		} else if isDigit(s[idx]) {
 			continue
-		} else if s[idx] == underscoreByte && idx > 0 && idx < len(s)-1 && (isLower(s[idx+1]) || isDigit(s[idx+1])) {
+		} else if s[idx] == separatorByte && idx > 0 && idx < len(s)-1 && (isLower(s[idx+1]) || isDigit(s[idx+1])) {
 			hasUnderscore = true
 			lowercaseSinceUnderscore = false
 			continue
@@ -58,7 +58,7 @@ func Snakecase(s string) string {
 		}
 
 		if len(b) > 0 {
-			b = append(b, underscoreByte)
+			b = append(b, separatorByte)
 		}
 
 		for idx < len(s) && (isUpper(s[idx]) || isDigit(s[idx])) {
