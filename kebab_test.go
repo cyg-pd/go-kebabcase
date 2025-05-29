@@ -2,8 +2,6 @@ package kebabcase
 
 import "testing"
 
-var ops int = 1e6
-
 type sample struct {
 	str, out string
 }
